@@ -27,7 +27,9 @@ if __name__ == '__main__':
     #
     processo = p.consultar_servico()
     
-    print processo[WS_NFE_SITUACAO][u'envio'].xml
+    print processo.envio.xml
     print
-    print processo[WS_NFE_SITUACAO][u'resposta'].xml
+    print processo.resposta.xml
+    print 
+    print processo.resposta.reason
     

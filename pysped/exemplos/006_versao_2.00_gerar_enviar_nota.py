@@ -178,13 +178,11 @@ if __name__ == '__main__':
     # }
     #
     for processo in p.processar_notas([n]):
-        chave_processo = processo.keys()[0]
         print
         print
+        print processo.envio.xml
         print
-        print chave_processo
+        print processo.resposta.xml
         print
-        print processo[chave_processo][u'envio'].xml
-        print
-        print processo[chave_processo][u'resposta'].xml
+        print processo.resposta.reason
     
