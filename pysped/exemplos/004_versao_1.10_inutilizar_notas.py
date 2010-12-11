@@ -8,8 +8,10 @@ if __name__ == '__main__':
     p = ProcessadorNFe()
     p.versao              = u'1.10'
     p.estado              = u'SP'
-    p.certificado.arquivo = u'certificado.pfx'
-    p.certificado.senha   = u'senha'
+    # arquivo 'certificado_caminho.txt' deve conter o caminho para o 'certificado.pfx'
+    p.certificado.arquivo = open('certificado_caminho.txt').read().strip()
+    # arquivo 'certificado_senha.txt' deve conter a senha para o 'certificado.pfx'
+    p.certificado.senha   = open('certificado_senha.txt').read().strip()                 
     p.salva_arquivos      = True
     p.contingencia_SCAN   = False
     p.caminho = u'' 
