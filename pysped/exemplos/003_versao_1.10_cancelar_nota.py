@@ -29,7 +29,9 @@ if __name__ == '__main__':
         protocolo=u'135100018751878',
         justificativa=u'Somente um teste de cancelamento')
     
-    print processo[WS_NFE_CANCELAMENTO][u'envio'].xml
+    print processo.envio.xml
     print
-    print processo[WS_NFE_CANCELAMENTO][u'resposta'].xml
+    print processo.resposta.xml
+    print
+    print processo.resposta.reason
     
