@@ -1,0 +1,4 @@
+[nosy]
+type = generic
+command = python 001*
+
