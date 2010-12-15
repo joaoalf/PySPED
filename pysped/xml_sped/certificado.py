@@ -170,40 +170,35 @@ class Certificado(object):
         #
         # Cria a variável de chamada (callable) da função de assinatura
         #
-        assinador = xmlsec.DSigCtx()
+        #assinador = xmlsec.DSigCtx()
 
         #
         # Buscamos a chave no arquivo do certificado
         #
-        chave = xmlsec.cryptoAppKeyLoad(filename=str(self.arquivo), format=xmlsec.KeyDataFormatPkcs12, pwd=str(self.senha), pwdCallback=None, pwdCallbackCtx=None)
+        #chave = xmlsec.cryptoAppKeyLoad(filename=str(self.arquivo), format=xmlsec.KeyDataFormatPkcs12, pwd=str(self.senha), pwdCallback=None, pwdCallbackCtx=None)
+        from M2Crypto import EVP
+        chave = EVP.load_key_string(self.chave, lambda: self.senha)
+        chave.sign_init()
 
         #
         # Atribui a chave ao assinador
         #
-        assinador.signKey = chave
+        #assinador.signKey = chave
 
         #
         # Realiza a assinatura
         #
-        assinador.sign(noh_assinatura)
-
-        #
-        # Guarda o status
-        #
-        status = assinador.status
-
-        #
-        # Libera a memória ocupada pelo assinador manualmente
-        #
-        assinador.destroy()
-
-        if status != xmlsec.DSigStatusSucceeded:
+        #assinador.sign(noh_assinatura)
+        try:
+            chave.sign_update(unicode(noh_assinatura))
+            signature = chave.sign_final()
+        except Exception, e:
             #
             # Libera a memória ocupada pelo documento xml manualmente
             #
             doc_xml.freeDoc()
             self._finaliza_funcoes_externas()
-            raise RuntimeError('Erro ao realizar a assinatura do arquivo; status: "' + str(status) + '"')
+            raise RuntimeError('Erro ao realizar a assinatura do arquivo; status: "' + str(e) + '"')
 
         #
         # Elimina do xml assinado a cadeia certificadora, deixando somente
