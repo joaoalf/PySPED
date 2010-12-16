@@ -28,7 +28,7 @@ if __name__ == '__main__':
     # }
     #
     processo = p.cancelar_nota(chave_nfe=u'35100411111111111111551010000000271123456789',
-        protocolo=u'135100018751878',
+        numero_protocolo=u'135100018751878',
         justificativa=u'Somente um teste de cancelamento')
     
     print processo.envio.xml
