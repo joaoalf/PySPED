@@ -25,6 +25,42 @@ class Certificado(object):
         self.data_fim_validade    = None
         self._doc_xml    = None
 
+    def _set_chave(self, chave):
+        self._chave = chave
+
+    def _get_chave(self):
+        try:
+            if self._chave: # != ''
+                return self._chave
+            else:
+                raise AttributeError("'chave' precisa ser regenerada")
+        except AttributeError, e:
+            if self.arquivo:    # arquivo disponível
+                self.prepara_certificado_arquivo_pfx()
+                return self._chave  # agora já disponível
+            else:
+                return ''
+    
+    chave = property(_get_chave, _set_chave)
+
+    def _set_certificado(self, certificado):
+        self._certificado = certificado
+
+    def _get_certificado(self):
+        try:
+            if self._certificado:   # != ''
+                return self._certificado
+            else:
+                raise AttributeError("'certificado' precisa ser regenerado")
+        except AttributeError, e:
+            if self.arquivo:    # arquivo disponível
+                self.prepara_certificado_arquivo_pfx()
+                return self._certificado  # agora já disponível
+            else:
+                return ''
+    
+    certificado = property(_get_certificado, _set_certificado)
+
     def prepara_certificado_arquivo_pfx(self):
         # Lendo o arquivo pfx no formato pkcs12 como binário
         pkcs12 = crypto.load_pkcs12(open(self.arquivo, 'rb').read(), self.senha)
@@ -167,8 +203,7 @@ class Certificado(object):
         # Separa o nó da assinatura
         #
         noh_assinatura = xmlsec.findNode(doc_xml.getRootElement(), xmlsec.NodeSignature, xmlsec.DSigNs)
-
-
+        
         #
         # Arquivos temporários são criados com o certificado no formato PEM
         #
