@@ -1,0 +1,45 @@
+Visão Geral
+-----------
+
+Biblioteca de interface com o webservice de Nota Fiscal Eletronica,
+da SEFAZ, oficializada pelo Ministerio da Fazendo do Governo do
+Brasil.
+
+A NF-e visa substituir as notas fiscais séries 1 e 1A
+
+Dependências
+------------
+
+- Geraldo Reports (http://geraldo.sourceforge.net/)
+  - para a geração da DANFE
+- SUDS (https://fedorahosted.org/suds/)
+  - para consumir o webservice SOAP/WSDL
+- lxml
+  - biblioteca de leitura e gravação de arquivos XML, de alta
+    performance e fácil de implementar.
+- libxml2
+  - outra biblioteca XML, mais rápida, escrita em C
+- openssl
+  - abertura e conversão dos certificados
+- XmlSEC
+  - assinatura e validação do XML
+- Pyxmlsec
+  - adaptador Python para a XmlSEC
+
+Executando os exemplos
+----------------------
+
+Para executar os exemplos você precisará
+
+1. De um certificado válido no ambiente do SEFAZ, no formato .pfx
+2. De conexão com a Internet, para conversar com o SEFAZ
+3. Das dependências instaladas
+
+Na pasta PySPED/pysped/exemplos, coloque o seguinte:
+
+* arquivo "certificado_caminho.txt", com o caminho no sistema até o certificado.pfx
+* arquivo "certificado_senha.txt", com a senha para o certificado.pfx
+
+Obs: caso esteja em um sistema *nix, nesta pasta será criado automaticamente um link simbólico para a pasta ../ (a pasta "pysped"). Se estiver em um Windows ou se este link não existir, você pode cria-lo manualmente ou copiar a pasta "pysped" para dentro da pasta "exemplos"
+
+Agora você já pode executar os exemplos
