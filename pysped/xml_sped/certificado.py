@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from pysped.xml_sped import XMLNFe, NAMESPACE_SIG, ABERTURA, tira_abertura
+import tempfile
 import libxml2
 import xmlsec
 import os
@@ -167,16 +168,33 @@ class Certificado(object):
         #
         noh_assinatura = xmlsec.findNode(doc_xml.getRootElement(), xmlsec.NodeSignature, xmlsec.DSigNs)
 
-        #
-        # Cria a variável de chamada (callable) da função de assinatura
-        #
-        assinador = xmlsec.DSigCtx()
 
         #
-        # Buscamos a chave no arquivo do certificado
+        # Arquivos temporários são criados com o certificado no formato PEM
         #
-        chave = xmlsec.cryptoAppKeyLoad(filename=str(self.arquivo), format=xmlsec.KeyDataFormatPkcs12, pwd=str(self.senha), pwdCallback=None, pwdCallbackCtx=None)
+        temp_chave = tempfile.NamedTemporaryFile('w')
+        temp_chave.write(self.chave)
+        temp_chave.flush()
+        
+        temp_certificado = tempfile.NamedTemporaryFile('w')
+        temp_certificado.write(self.certificado)
+        temp_certificado.flush()
+        
+        #
+        # Buscamos chave e certificado no arquivo temporário e inserimos no "chaveiro"
+        #
+        chaveiro = xmlsec.KeysMngr()
+        xmlsec.cryptoAppDefaultKeysMngrInit(chaveiro)
 
+        chave = xmlsec.cryptoAppKeyLoad(filename=temp_chave.name, format=xmlsec.KeyDataFormatPem, pwd=None, pwdCallback=None, pwdCallbackCtx=None)
+        certificado = xmlsec.cryptoAppKeyCertLoad(chave, filename=temp_certificado.name, format=xmlsec.KeyDataFormatPem)
+        xmlsec.cryptoAppDefaultKeysMngrAdoptKey(chaveiro, chave)
+        
+        #
+        # Cria a variável de chamada (callable) da função de assinatura, usando o "chaveiro"
+        #
+        assinador = xmlsec.DSigCtx(chaveiro)
+        
         #
         # Atribui a chave ao assinador
         #
@@ -196,6 +214,13 @@ class Certificado(object):
         # Libera a memória ocupada pelo assinador manualmente
         #
         assinador.destroy()
+        
+        #
+        # Arquivos temporários são deletados do disco
+        #
+        temp_chave.close()
+        temp_certificado.close()
+
 
         if status != xmlsec.DSigStatusSucceeded:
             #
