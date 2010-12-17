@@ -1769,6 +1769,7 @@ class NFe(nfe_110.NFe):
         self.infNFe.ide.cNF.valor = self.chave[35:43]
 
     def monta_chave(self):
+        self.gera_nova_chave()
         chave = unicode(self.infNFe.ide.cUF.valor).strip().rjust(2, u'0')
         chave += unicode(self.infNFe.ide.dEmi.valor.strftime(u'%y%m')).strip().rjust(4, u'0')
         chave += unicode(self.infNFe.emit.CNPJ.valor).strip().rjust(14, u'0')
