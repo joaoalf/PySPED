@@ -32,9 +32,12 @@ if __name__ == '__main__':
         numero_inicial=18,
         justificativa=u'Testando a inutilização de NF-e')
     
-    print processo[WS_NFE_INUTILIZACAO][u'envio'].xml
+    print processo.envio.xml
     print
-    print processo[WS_NFE_INUTILIZACAO][u'resposta'].xml
+    print processo.resposta.xml
+    print 
+    print "NOTA UNICA"
+    print processo.resposta.reason
     
     #
     # Inutilizar uma faixa de numeração
@@ -49,4 +52,5 @@ if __name__ == '__main__':
     print
     print processo.resposta.xml
     print
+    print "FAIXA DE NOTAS"
     print processo.resposta.reason
