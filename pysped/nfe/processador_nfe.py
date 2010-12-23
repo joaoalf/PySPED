@@ -639,8 +639,12 @@ class ProcessadorNFe(object):
         self.caminho = self.monta_caminho_nfe(ambiente=nfe.infNFe.ide.tpAmb.valor, chave_nfe=nfe.chave)
 
         processo = None
+
+        # TODO: Durante os testes, imprimir PDF mesmo para notas que não foram "aprovadas"
+        # Lembrar de desfazer isso depois
+
         # Se nota foi autorizada ou denegada
-        if protnfe_recibo.infProt.cStat.valor in (u'100', u'110', u'301', u'302'):
+        if True: #protnfe_recibo.infProt.cStat.valor in (u'100', u'110', u'301', u'302'):
             if self.versao == u'1.10':
                 processo = ProcNFe_110()
 
