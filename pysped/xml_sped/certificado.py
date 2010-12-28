@@ -61,6 +61,31 @@ class Certificado(object):
     
     certificado = property(_get_certificado, _set_certificado)
 
+    @property
+    def proprietario_nome(self):
+        if self.proprietario.get('CN', False):
+            return self.proprietario['CN'].rsplit(':',1)[0] 
+        else: # chave CN ainda não disponível
+            try:
+                self.prepara_certificado_arquivo_pfx()
+                return self.proprietario['CN'].rsplit(':',1)[0]
+            except IOError, e:  # arquivo do certificado não disponível
+                return ''
+
+    @property
+    def proprietario_cnpj(self):
+        if self.proprietario.get('CN', False):
+            return self.proprietario['CN'].rsplit(':',1)[1] 
+        else: #chave CN ainda não disponível
+            try:
+                self.prepara_certificado_arquivo_pfx()
+                return self.proprietario['CN'].rsplit(':',1)[1]
+            except IOError, e:  # arquivo do certificado não disponível
+                return ''
+
+
+
+
     def prepara_certificado_arquivo_pfx(self):
         # Lendo o arquivo pfx no formato pkcs12 como binário
         pkcs12 = crypto.load_pkcs12(open(self.arquivo, 'rb').read(), self.senha)
@@ -95,8 +120,6 @@ class Certificado(object):
         self.emissor = dict(cert_openssl.get_issuer().get_components())
         self.proprietario = dict(cert_openssl.get_subject().get_components())
         
-        self.proprietario_nome, self.proprietario_cnpj = self.proprietario['CN'].rsplit(':',1)
-
         self.data_inicio_validade = datetime.strptime(cert_openssl.get_notBefore(), '%Y%m%d%H%M%SZ')
         self.data_fim_validade    = datetime.strptime(cert_openssl.get_notAfter(), '%Y%m%d%H%M%SZ')
 

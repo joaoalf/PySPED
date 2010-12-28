@@ -46,8 +46,8 @@ if __name__ == '__main__':
     #
     # Emitente
     #
-    n.infNFe.emit.CNPJ.valor  = u'11111111111111'
-    n.infNFe.emit.xNome.valor = u'Razão Social Ltda. EPP'
+    n.infNFe.emit.CNPJ.valor  = p.certificado.proprietario_cnpj #u'11111111111111'
+    n.infNFe.emit.xNome.valor = p.certificado.proprietario_nome #u'Razão Social Ltda. EPP'
     n.infNFe.emit.xFant.valor = u'Nome Fantasia'
     n.infNFe.emit.enderEmit.xLgr.valor    = u'R. Ibiúna'
     n.infNFe.emit.enderEmit.nro.valor     = u'729'
