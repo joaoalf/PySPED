@@ -94,6 +94,8 @@ class Certificado(object):
 
         self.emissor = dict(cert_openssl.get_issuer().get_components())
         self.proprietario = dict(cert_openssl.get_subject().get_components())
+        
+        self.proprietario_nome, self.proprietario_cnpj = self.proprietario['CN'].rsplit(':',1)
 
         self.data_inicio_validade = datetime.strptime(cert_openssl.get_notBefore(), '%Y%m%d%H%M%SZ')
         self.data_fim_validade    = datetime.strptime(cert_openssl.get_notAfter(), '%Y%m%d%H%M%SZ')
