@@ -33,15 +33,15 @@ if __name__ == '__main__':
     n.infNFe.ide.indPag.valor  = 2
     n.infNFe.ide.serie.valor   = 101
     n.infNFe.ide.nNF.valor     = 27
-    n.infNFe.ide.dEmi.valor    = datetime(2010, 4, 12)
-    n.infNFe.ide.dSaiEnt.valor = datetime(2010, 4, 12)
+    n.infNFe.ide.dEmi.valor    = datetime(2010, 12, 12)
+    n.infNFe.ide.dSaiEnt.valor = datetime(2010, 12, 12)
     n.infNFe.ide.cMunFG.valor  = 3513801
     n.infNFe.ide.tpImp.valor   = 1
     n.infNFe.ide.tpEmis.valor  = 1
     n.infNFe.ide.indPag.valor  = 1
     n.infNFe.ide.finNFe.valor  = 1
     n.infNFe.ide.procEmi.valor = 0
-    n.infNFe.ide.verProc.valor = u'TaugaRS Haveno 1.0'
+    n.infNFe.ide.verProc.valor = u'PySPED NFe http://github.com/search?q=PySPED'
     
     #
     # Emitente
@@ -60,12 +60,12 @@ if __name__ == '__main__':
     #n.infNFe.emit.enderEmit.cPais.valor   = u'1058'
     #n.infNFe.emit.enderEmit.xPais.valor   = u'Brasil'
     n.infNFe.emit.enderEmit.fone.valor    = u'1534110602'
-    n.infNFe.emit.IE.valor = u'111111111111'
+    n.infNFe.emit.IE.valor = '115944836112'
 
     #
     # Destinatário
     #
-    n.infNFe.dest.CNPJ.valor  = u'11111111111111'
+    n.infNFe.dest.CNPJ.valor  = '01225741000133' 
     n.infNFe.dest.xNome.valor = u'Razão Social Ltda. EPP'
     n.infNFe.dest.enderDest.xLgr.valor    = u'R. Ibiúna'
     n.infNFe.dest.enderDest.nro.valor     = u'729'
@@ -78,7 +78,7 @@ if __name__ == '__main__':
     #n.infNFe.dest.enderDest.cPais.valor   = u'1058'
     #n.infNFe.dest.enderDest.xPais.valor   = u'Brasil'
     n.infNFe.dest.enderDest.fone.valor    = u'1534110602'
-    n.infNFe.dest.IE.valor = u'111111111111'
+    n.infNFe.dest.IE.valor = u'114691048114'
 
     #
     # Detalhe
