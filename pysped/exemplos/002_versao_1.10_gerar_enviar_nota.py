@@ -32,7 +32,7 @@ if __name__ == '__main__':
     n.infNFe.ide.natOp.valor   = u'Venda de produto do estabelecimento'
     n.infNFe.ide.indPag.valor  = 2
     n.infNFe.ide.serie.valor   = 101
-    n.infNFe.ide.nNF.valor     = 27
+    n.infNFe.ide.nNF.valor     = 29
     n.infNFe.ide.dEmi.valor    = datetime(2010, 12, 12)
     n.infNFe.ide.dSaiEnt.valor = datetime(2010, 12, 12)
     n.infNFe.ide.cMunFG.valor  = 3513801
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     n.infNFe.ide.indPag.valor  = 1
     n.infNFe.ide.finNFe.valor  = 1
     n.infNFe.ide.procEmi.valor = 0
-    n.infNFe.ide.verProc.valor = u'PySPED NFe http://github.com/search?q=PySPED'
+    n.infNFe.ide.verProc.valor = u'PySPED NFe (github)'
     
     #
     # Emitente
