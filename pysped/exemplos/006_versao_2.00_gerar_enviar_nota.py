@@ -32,9 +32,9 @@ if __name__ == '__main__':
     n.infNFe.ide.natOp.valor   = u'Venda de produto do estabelecimento'
     n.infNFe.ide.indPag.valor  = 2
     n.infNFe.ide.serie.valor   = 101
-    n.infNFe.ide.nNF.valor     = 27
-    n.infNFe.ide.dEmi.valor    = datetime(2010, 4, 12)
-    n.infNFe.ide.dSaiEnt.valor = datetime(2010, 4, 12)
+    n.infNFe.ide.nNF.valor     = 29
+    n.infNFe.ide.dEmi.valor    = datetime(2011, 4, 1)
+    n.infNFe.ide.dSaiEnt.valor = datetime(2011, 4, 1)
     n.infNFe.ide.cMunFG.valor  = 3513801
     n.infNFe.ide.tpImp.valor   = 1
     n.infNFe.ide.tpEmis.valor  = 1
@@ -97,7 +97,7 @@ if __name__ == '__main__':
     d1.prod.cProd.valor    = u'código do produto'
     d1.prod.cEAN.valor     = u''
     d1.prod.xProd.valor    = u'Descrição do produto'
-    d1.prod.NCM.valor      = u'01'
+    d1.prod.NCM.valor      = u'94034000'
     d1.prod.EXTIPI.valor   = u''
     d1.prod.CFOP.valor     = u'5101'
     d1.prod.uCom.valor     = u'UND'
@@ -122,6 +122,7 @@ if __name__ == '__main__':
     #
     d1.imposto.regime_tributario = 1
     d1.imposto.ICMS.CSOSN.valor   = u'400'
+    #d1.imposto.ICMS.vBC.valor    = u'1000.00'
 
     d1.imposto.IPI.CST.valor    = u'99'
     #d1.imposto.IPI.vBC.valor    = u'1000.00'
@@ -153,8 +154,8 @@ if __name__ == '__main__':
     #
     # Totais
     #
-    n.infNFe.total.ICMSTot.vBC.valor     = u'1000.00'
-    n.infNFe.total.ICMSTot.vICMS.valor   = u'180.00'
+    n.infNFe.total.ICMSTot.vBC.valor     = u'0.00'
+    n.infNFe.total.ICMSTot.vICMS.valor   = u'0.00'
     n.infNFe.total.ICMSTot.vBCST.valor   = u'0.00'
     n.infNFe.total.ICMSTot.vST.valor     = u'0.00'
     n.infNFe.total.ICMSTot.vProd.valor   = u'1000.00'
@@ -162,11 +163,11 @@ if __name__ == '__main__':
     n.infNFe.total.ICMSTot.vSeg.valor    = u'0.00'
     n.infNFe.total.ICMSTot.vDesc.valor   = u'0.00'
     n.infNFe.total.ICMSTot.vII.valor     = u'0.00'
-    n.infNFe.total.ICMSTot.vIPI.valor    = u'100.00'
-    n.infNFe.total.ICMSTot.vPIS.valor    = u'6.50'
-    n.infNFe.total.ICMSTot.vCOFINS.valor = u'30.00'
+    n.infNFe.total.ICMSTot.vIPI.valor    = u'0.00'
+    n.infNFe.total.ICMSTot.vPIS.valor    = u'0.00'
+    n.infNFe.total.ICMSTot.vCOFINS.valor = u'0.00'
     n.infNFe.total.ICMSTot.vOutro.valor  = u'0.00'
-    n.infNFe.total.ICMSTot.vNF.valor     = u'1100.00'
+    n.infNFe.total.ICMSTot.vNF.valor     = u'0.00'
 
     #
     # O retorno de cada webservice é um dicionário
