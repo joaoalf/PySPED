@@ -640,7 +640,7 @@ class ProcessadorNFe(object):
 
         processo = None
         # Se nota foi autorizada ou denegada
-        if True: #protnfe_recibo.infProt.cStat.valor in (u'100', u'110', u'301', u'302'): #TODO: Desfazer depois de testar!!
+        if protnfe_recibo.infProt.cStat.valor in (u'100', u'110', u'301', u'302'):
             if self.versao == u'1.10':
                 processo = ProcNFe_110()
 
