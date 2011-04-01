@@ -603,6 +603,10 @@ class XMLNFe(NohXML):
                 #raise AssertionError(unicode(schema.error_log))
             print esquema.error_log.last_error
             #import pdb; pdb.set_trace()
+            xml_com_problemas = open('XML_COM_PROBLEAS.xml', 'w')
+            xml_com_problemas.write(self.xml.encode('utf-8'))
+            xml_com_problemas.close()
+            print 'XML com problemas salvo em:', xml_com_problemas.name
             raise Exception(u'NFe nao validou no esquema "%s"' % self.arquivo_esquema)
 
         return esquema.error_log
