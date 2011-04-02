@@ -169,6 +169,8 @@ if __name__ == '__main__':
     n.infNFe.total.ICMSTot.vOutro.valor  = u'0.00'
     n.infNFe.total.ICMSTot.vNF.valor     = u'0.00'
 
+    n.infNFe.infAdic.infCpl.valor = u'Documento emitido por ME ou EPP optante pelo Simples Nacional. ' \
+                                    u'Não gera direito a crédito fiscal de IPI. '
     #
     # O retorno de cada webservice é um dicionário
     # estruturado da seguinte maneira:
