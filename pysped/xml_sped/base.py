@@ -36,7 +36,7 @@ NAMESPACE_SIG = u'http://www.w3.org/2000/09/xmldsig#'
 ABERTURA = u'<?xml version="1.0" encoding="utf-8"?>'
 
 CAMINHO_ESQUEMA_110 = u'schema/pl_005d/'
-CAMINHO_ESQUEMA_200 = u'schema/pl_006e/'
+CAMINHO_ESQUEMA_200 = u'schema/pl_006g/'
 
 locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 locale.setlocale(locale.LC_COLLATE, 'pt_BR.UTF-8')
