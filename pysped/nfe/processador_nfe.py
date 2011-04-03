@@ -533,7 +533,7 @@ class ProcessadorNFe(object):
         #resposta.validar()
         if self.salvar_arquivos:
             arq = open(self.caminho + envio.data.strftime(u'%Y%m%dT%H%M%S') + u'-sta.xml', 'w')
-            arq.write(envio.xml.encode(u'utf-8'))
+            arq.write(resposta.xml.encode(u'utf-8'))
             arq.close()
 
         return processo
