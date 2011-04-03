@@ -549,13 +549,13 @@ class ProcessadorNFe(object):
         ambiente = nfe.infNFe.ide.tpAmb.valor
         self.caminho = self.monta_caminho_nfe(ambiente=nfe.infNFe.ide.tpAmb.valor, chave_nfe=nfe.chave)
 
-        proc_servico = self.consultar_servico(ambiente=ambiente)
-        yield proc_servico
+        #proc_servico = self.consultar_servico(ambiente=ambiente)
+        #yield proc_servico
 
         #
         # Serviço em operação?
         #
-        if proc_servico.resposta.cStat.valor == u'107':
+        if True: #proc_servico.resposta.cStat.valor == u'107':
             #
             # Verificar se as notas já não foram emitadas antes
             #
@@ -568,11 +568,14 @@ class ProcessadorNFe(object):
                 #
                 # Se a nota já constar na SEFAZ
                 #
-                if not (
-                    ((self.versao == u'1.10') and (proc_consulta.resposta.infProt.cStat.valor in (u'217', u'999',)))
-                    or
-                    ((self.versao == u'2.00') and (proc_consulta.resposta.cStat.valor in (u'217', u'999',)))
-                ):
+                if self.versao == '1.10':
+                    codigo_retorno = proc_consulta.resposta.infProt.cStat.valor
+                    motivo_codigo_retorno = proc_consulta.resposta.infProt.xMotivo.valor
+                elif self.versao == '2.00':
+                    codigo_retorno = proc_consulta.resposta.cStat.valor
+                    motivo_codigo_retorno = proc_consulta.resposta.xMotivo.valor
+
+                if codigo_retorno in (u'217', u'999'):
                     #
                     # Interrompe todo o processo
                     #
