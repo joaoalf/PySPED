@@ -626,6 +626,18 @@ class ProcessadorNFe(object):
                 if processo is not None:
                     dic_procNFe[nfe.chave] = processo
 
+
+    def gerar_danfe(self, nfe, protnfe_recibo, processo):
+        self.danfe.NFe = nfe
+        self.danfe.protNFe = protnfe_recibo
+        self.danfe.salvar_arquivo = False
+        self.danfe.gerar_danfe()
+        danfe_pdf = StringIO()
+        self.danfe.danfe.generate_by(PDFGenerator, filename=danfe_pdf)
+        processo.danfe_pdf = danfe_pdf.getvalue()
+        danfe_pdf.close()
+        return danfe_pdf
+
     def montar_processo_uma_nota(self, nfe, protnfe_recibo=None, protnfe_consulta_110=None, retcancnfe=None):
         #
         # Somente para a versão 1.10
@@ -662,15 +674,7 @@ class ProcessadorNFe(object):
             processo.NFe     = nfe
             processo.protNFe = protnfe_recibo
 
-            self.danfe.NFe     = nfe
-            self.danfe.protNFe = protnfe_recibo
-            self.danfe.salvar_arquivo = False
-            self.danfe.gerar_danfe()
-
-            danfe_pdf = StringIO()
-            self.danfe.danfe.generate_by(PDFGenerator, filename=danfe_pdf)
-            processo.danfe_pdf = danfe_pdf.getvalue()
-            danfe_pdf.close()
+            self.gerar_danfe(nfe, protnfe_recibo, processo)
 
             if self.salvar_arquivos:
                 nome_arq = self.caminho + unicode(nfe.chave).strip().rjust(44, u'0') + u'-proc-nfe.xml'
