@@ -627,7 +627,7 @@ class ProcessadorNFe(object):
                 danfes.append(danfe)
                 if processo is not None:
                     dic_procNFe[nfe.chave] = processo
-        return danfe
+        return danfes
 
 
     def gerar_danfe(self, nfe, protnfe_recibo, processo):
