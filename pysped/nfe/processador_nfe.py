@@ -5,6 +5,7 @@ from OpenSSL import crypto
 import socket
 import ssl
 from datetime import datetime
+import time
 import os
 from uuid import uuid4
 
@@ -594,6 +595,7 @@ class ProcessadorNFe(object):
             # Deu certo?
             #
             if ret_envi_nfe.cStat.valor == u'103':
+                time.sleep(ret_envi_nfe.infRec.tMed.valor * 1.5) # Espere o processamento antes de consultar o recibo
                 proc_recibo = self.consultar_recibo(ambiente=ret_envi_nfe.tpAmb.valor, numero_recibo=ret_envi_nfe.infRec.nRec.valor)
 
                 # Montar os processos das NF-es
