@@ -5775,4 +5775,3 @@ for estado, cidades in MUNICIPIO_CODIGO.iteritems():
         nome_limpo = accents_remover(cidade)
         if nome_limpo != cidade:
             MUNICIPIO_CODIGO[estado][nome_limpo] = codigo
-            print nome_limpo
