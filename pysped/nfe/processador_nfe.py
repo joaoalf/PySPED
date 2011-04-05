@@ -614,17 +614,20 @@ class ProcessadorNFe(object):
                 dic_procNFe = proc_recibo.resposta.dic_procNFe
 
                 self.caminho = caminho_original
-                self.montar_processo_lista_notas(lista_nfes, dic_protNFe, dic_procNFe)
+                danfe = self.montar_processo_lista_notas(lista_nfes, dic_protNFe, dic_procNFe)
+                processos['danfe'] = danfe
                 return
 
     def montar_processo_lista_notas(self, lista_nfes, dic_protNFe, dic_procNFe):
+        danfes = []
         for nfe in lista_nfes:
             if dic_protNFe.has_key(nfe.chave):
                 protocolo = dic_protNFe[nfe.chave]
-                processo = self.montar_processo_uma_nota(nfe, protnfe_recibo=protocolo)
-
+                processo, danfe = self.montar_processo_uma_nota(nfe, protnfe_recibo=protocolo)
+                danfes.append(danfe)
                 if processo is not None:
                     dic_procNFe[nfe.chave] = processo
+        return danfe
 
 
     def gerar_danfe(self, nfe, protnfe_recibo, processo):
@@ -635,7 +638,7 @@ class ProcessadorNFe(object):
         danfe_pdf = StringIO()
         self.danfe.danfe.generate_by(PDFGenerator, filename=danfe_pdf)
         processo.danfe_pdf = danfe_pdf.getvalue()
-        danfe_pdf.close()
+        #danfe_pdf.close()
         return danfe_pdf
 
     def montar_processo_uma_nota(self, nfe, protnfe_recibo=None, protnfe_consulta_110=None, retcancnfe=None):
@@ -674,7 +677,7 @@ class ProcessadorNFe(object):
             processo.NFe     = nfe
             processo.protNFe = protnfe_recibo
 
-            self.gerar_danfe(nfe, protnfe_recibo, processo)
+            danfe = self.gerar_danfe(nfe, protnfe_recibo, processo)
 
             if self.salvar_arquivos:
                 nome_arq = self.caminho + unicode(nfe.chave).strip().rjust(44, u'0') + u'-proc-nfe.xml'
@@ -701,7 +704,7 @@ class ProcessadorNFe(object):
         #    import ipdb; ipdb.set_trace()
 
         self.caminho = caminho_original
-        return processo
+        return processo, danfe
 
     def monta_caminho_nfe(self, ambiente, chave_nfe):
         caminho = self.caminho
