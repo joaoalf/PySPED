@@ -9,6 +9,11 @@ import time
 import os
 from uuid import uuid4
 
+try:
+    from collections import OrderedDict
+except ImportError:
+    from ordereddict import OrderedDict
+
 from webservices_flags import *
 import webservices_1
 import webservices_2
@@ -543,6 +548,7 @@ class ProcessadorNFe(object):
         #
         # Definir o caminho geral baseado na 1ª NF-e
         #
+        self.processos = processos = OrderedDict()
         caminho_original = self.caminho
         nfe = lista_nfes[0]
         nfe.monta_chave()
@@ -551,6 +557,7 @@ class ProcessadorNFe(object):
         self.caminho = self.monta_caminho_nfe(ambiente=nfe.infNFe.ide.tpAmb.valor, chave_nfe=nfe.chave)
 
         proc_servico = self.consultar_servico(ambiente=ambiente)
+        processos['servico'] = proc_servico
         yield proc_servico
 
         #
@@ -564,6 +571,7 @@ class ProcessadorNFe(object):
                 nfe.monta_chave()
                 self.caminho = caminho_original
                 proc_consulta = self.consultar_nota(ambiente=nfe.infNFe.ide.tpAmb.valor, chave_nfe=nfe.chave)
+                processos['consulta'] = proc_consulta
                 yield proc_consulta
 
                 #
@@ -587,6 +595,7 @@ class ProcessadorNFe(object):
             self.caminho = caminho_original
             self.caminho = self.monta_caminho_nfe(ambiente=nfe.infNFe.ide.tpAmb.valor, chave_nfe=nfe.chave)
             proc_envio = self.enviar_lote(lista_nfes=lista_nfes)
+            processos['envio'] = proc_envio
             yield proc_envio
 
             ret_envi_nfe = proc_envio.resposta
@@ -597,6 +606,8 @@ class ProcessadorNFe(object):
             if ret_envi_nfe.cStat.valor == u'103':
                 time.sleep(ret_envi_nfe.infRec.tMed.valor * 1.5) # Espere o processamento antes de consultar o recibo
                 proc_recibo = self.consultar_recibo(ambiente=ret_envi_nfe.tpAmb.valor, numero_recibo=ret_envi_nfe.infRec.nRec.valor)
+                processos['recibo'] = proc_recibo
+                yield proc_recibo
 
                 # Montar os processos das NF-es
                 dic_protNFe = proc_recibo.resposta.dic_protNFe
@@ -604,8 +615,7 @@ class ProcessadorNFe(object):
 
                 self.caminho = caminho_original
                 self.montar_processo_lista_notas(lista_nfes, dic_protNFe, dic_procNFe)
-
-                yield proc_recibo
+                return
 
     def montar_processo_lista_notas(self, lista_nfes, dic_protNFe, dic_procNFe):
         for nfe in lista_nfes:
@@ -683,6 +693,8 @@ class ProcessadorNFe(object):
                 arq = open(nome_arq, 'w')
                 arq.write(processo.danfe_pdf)
                 arq.close()
+        #else:
+        #    import ipdb; ipdb.set_trace()
 
         self.caminho = caminho_original
         return processo
