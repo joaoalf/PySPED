@@ -180,12 +180,16 @@ if __name__ == '__main__':
     #       }
     # }
     #
-    for processo in p.processar_notas([n]):
-        print
-        print
-        print processo.envio.xml
-        print
-        print processo.resposta.xml
-        print
-        print processo.resposta.reason
+    try:
+        for processo in p.processar_notas([n]):
+            print
+            print
+            print processo.envio.xml
+            print
+            print processo.resposta.xml
+            print
+            print processo.resposta.reason
+    finally:
+        if p.salvar_arquivos:
+            p.salvar_arquivos_agora()
 
