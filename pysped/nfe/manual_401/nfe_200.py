@@ -1625,6 +1625,7 @@ class Ide(nfe_110.Ide):
         xml += self.nNF.xml
         xml += self.dEmi.xml
         xml += self.dSaiEnt.xml
+        xml += self.hSaiEnt.xml
         xml += self.tpNF.xml
         xml += self.cMunFG.xml
 
@@ -1654,6 +1655,7 @@ class Ide(nfe_110.Ide):
             self.nNF.xml     = arquivo
             self.dEmi.xml    = arquivo
             self.dSaiEnt.xml = arquivo
+            self.hSaiEnt.xml = arquivo
             self.tpNF.xml    = arquivo
             self.cMunFG.xml  = arquivo
 
