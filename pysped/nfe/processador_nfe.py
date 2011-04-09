@@ -219,11 +219,11 @@ class ProcessadorNFe(object):
         for n in lista_nfes:
             n.monta_chave()
             novo_arquivo_nome = n.chave + u'-nfe.xml'
-            novo_arquivo = n.xml.encode('utf-8')
+            novo_arquivo = n.xml
             novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         novo_arquivo_nome = unicode(envio.idLote.valor).strip().rjust(15, u'0') + u'-env-lot.xml'
-        novo_arquivo = envio.xml.encode('utf-8')
+        novo_arquivo = envio.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         self._conectar_servico(WS_NFE_ENVIO_LOTE, envio, resposta)
@@ -235,7 +235,7 @@ class ProcessadorNFe(object):
         else:
             novo_arquivo_nome += u'-rej.xml'
 
-        novo_arquivo = resposta.xml.encode('utf-8')
+        novo_arquivo = resposta.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         return processo, novos_arquivos
@@ -262,7 +262,7 @@ class ProcessadorNFe(object):
         envio.validar()
 
         novo_arquivo_nome = unicode(envio.nRec.valor).strip().rjust(15, u'0') + u'-ped-rec.xml'
-        novo_arquivo = envio.xml.encode('utf-8')
+        novo_arquivo = envio.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         self._conectar_servico(WS_NFE_CONSULTA_RECIBO, envio, resposta, ambiente)
@@ -274,7 +274,7 @@ class ProcessadorNFe(object):
         else:
             novo_arquivo_nome += u'-rej.xml'
 
-        novo_arquivo = resposta.xml.encode('utf-8')
+        novo_arquivo = resposta.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         #
@@ -295,7 +295,7 @@ class ProcessadorNFe(object):
             else:
                 novo_arquivo_nome += u'rej.xml'
 
-            novo_arquivo = pn.xml.encode('utf-8')
+            novo_arquivo = pn.xml
             novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         return processo, novos_arquivos
@@ -328,7 +328,7 @@ class ProcessadorNFe(object):
         envio.validar()
 
         novo_arquivo_nome = unicode(envio.infCanc.chNFe.valor).strip().rjust(44, u'0') + u'-ped-can.xml'
-        novo_arquivo = envio.xml.encode('utf-8')
+        novo_arquivo = envio.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         self._conectar_servico(WS_NFE_CANCELAMENTO, envio, resposta, ambiente)
@@ -356,14 +356,14 @@ class ProcessadorNFe(object):
             else:
                 novo_arquivo_nome += u'rej.xml'
 
-            novo_arquivo = resposta.xml.encode('utf-8')
+            novo_arquivo = resposta.xml
             novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
             # Se for autorizado, monta o processo de cancelamento
             if resposta.infCanc.cStat.valor == u'101':
                 # Estranhamente, o nome desse arquivo, pelo manual, deve ser chave-can.xml
                 novo_arquivo_nome = unicode(envio.infCanc.chNFe.valor).strip().rjust(44, u'0') + u'-can.xml'
-                novo_arquivo = processo_cancelamento_nfe.xml.encode('utf-8')
+                novo_arquivo = processo_cancelamento_nfe.xml
                 novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         return processo, novos_arquivos
@@ -411,7 +411,7 @@ class ProcessadorNFe(object):
         envio.validar()
 
         novo_arquivo_nome = unicode(envio.chave).strip().rjust(41, u'0') + u'-ped-inu.xml'
-        novo_arquivo = envio.xml.encode('utf-8')
+        novo_arquivo = envio.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         self._conectar_servico(WS_NFE_INUTILIZACAO, envio, resposta, ambiente)
@@ -440,18 +440,18 @@ class ProcessadorNFe(object):
             else:
                 novo_arquivo_nome += u'rej.xml'
 
-            novo_arquivo = resposta.xml.encode('utf-8')
+            novo_arquivo = resposta.xml
             novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
             # Se for autorizada, monta o processo de inutilização
             if resposta.infInut.cStat.valor == u'102':
                 novo_arquivo_nome = unicode(envio.chave).strip().rjust(41, u'0') + u'-proc-inut-nfe.xml'
-                novo_arquivo = processo_inutilizacao_nfe.xml.encode('utf-8')
+                novo_arquivo = processo_inutilizacao_nfe.xml
                 novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
                 # Estranhamente, o nome desse arquivo, pelo manual, deve ser chave-inu.xml
                 novo_arquivo_nome = unicode(envio.chave).strip().rjust(41, u'0') + u'-inu.xml'
-                novo_arquivo = processo_inutilizacao_nfe.xml.encode('utf-8')
+                novo_arquivo = processo_inutilizacao_nfe.xml
                 novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         return processo, novos_arquivos
@@ -480,13 +480,13 @@ class ProcessadorNFe(object):
         envio.validar()
 
         novo_arquivo_nome = unicode(chave_nfe).strip().rjust(44, u'0') + u'-ped-sit.xml'
-        novo_arquivo = envio.xml.encode('utf-8')
+        novo_arquivo = envio.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         self._conectar_servico(WS_NFE_CONSULTA, envio, resposta, ambiente)
 
         novo_arquivo_nome = unicode(chave_nfe).strip().rjust(44, u'0') + u'-sit.xml'
-        novo_arquivo = resposta.xml.encode('utf-8')
+        novo_arquivo = resposta.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         return processo, novos_arquivos
@@ -517,13 +517,13 @@ class ProcessadorNFe(object):
         envio.validar()
 
         novo_arquivo_nome = envio.data.strftime(u'%Y%m%dT%H%M%S') + u'-ped-sta.xml'
-        novo_arquivo = envio.xml.encode('utf-8')
+        novo_arquivo = envio.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         self._conectar_servico(WS_NFE_SITUACAO, envio, resposta, ambiente)
 
         novo_arquivo_nome = envio.data.strftime(u'%Y%m%dT%H%M%S') + u'-sta.xml'
-        novo_arquivo = resposta.xml.encode('utf-8')
+        novo_arquivo = resposta.xml
         novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
         return processo, novos_arquivos
@@ -668,7 +668,7 @@ class ProcessadorNFe(object):
             danfe_pdf = self.gerar_danfe(nfe, protnfe_recibo, processo)
 
             novo_arquivo_nome = unicode(nfe.chave).strip().rjust(44, u'0') + u'-proc-nfe.xml'
-            novo_arquivo = processo.xml.encode('utf-8')
+            novo_arquivo = processo.xml
             novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
             # Estranhamente, o nome desse arquivo, pelo manual, deve ser chave-nfe.xml ou chave-den.xml
@@ -679,7 +679,7 @@ class ProcessadorNFe(object):
                 novo_arquivo_nome = unicode(nfe.chave).strip().rjust(44, u'0') + u'-den.xml'
 
             novo_arquivo_nome = novo_arquivo_nome
-            novo_arquivo = processo.xml.encode('utf-8')
+            novo_arquivo = processo.xml
             novos_arquivos.append((novo_arquivo_nome, novo_arquivo))
 
             novo_arquivo_nome = unicode(nfe.chave).strip().rjust(44, u'0') + u'.pdf'
@@ -757,7 +757,7 @@ class ProcessadorNFe(object):
                 if hasattr(conteudo, 'getvalue'):
                     arquivo_em_disco.write(conteudo.getvalue())
                 else:
-                    arquivo_em_disco.write(conteudo)
+                    arquivo_em_disco.write(conteudo.encode('utf-8'))
                 arquivo_em_disco.close()
 
 
