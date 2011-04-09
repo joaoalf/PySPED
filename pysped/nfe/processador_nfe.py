@@ -47,6 +47,9 @@ from manual_401 import ConsStatServ_200, RetConsStatServ_200
 from danfe.danferetrato import *
 from StringIO import StringIO
 
+# Vezes a tentar novamente caso o recibo de lote retorne "Em processamento"
+TENTATIVAS_MAXIMAS = 5
+
 
 class ProcessoNFe(object):
     def __init__(self, webservice=0, envio=u'', resposta=u''):
@@ -595,8 +598,14 @@ class ProcessadorNFe(object):
             # Deu certo?
             #
             if ret_envi_nfe.cStat.valor == u'103':
-                time.sleep(ret_envi_nfe.infRec.tMed.valor * 1.5) # Espere o processamento antes de consultar o recibo
+                time.sleep(ret_envi_nfe.infRec.tMed.valor * 1.3) # Espere o processamento antes de consultar o recibo
                 proc_recibo = self.consultar_recibo(ambiente=ret_envi_nfe.tpAmb.valor, numero_recibo=ret_envi_nfe.infRec.nRec.valor)
+                tentativas = 0
+                while proc_recibo.resposta.cStat.valor == '105' and tentativas < TENTATIVAS_MAXIMAS: # Ainda em processamento
+                    time.sleep(ret_envi_nfe.infRec.tMed.valor * 1.5) # Espere o processamento antes de consultar o recibo
+                    tentativas += 1
+                    #print 'tentativas:', tentativas
+                    proc_recibo = self.consultar_recibo(ambiente=ret_envi_nfe.tpAmb.valor, numero_recibo=ret_envi_nfe.infRec.nRec.valor)
 
                 # Montar os processos das NF-es
                 dic_protNFe = proc_recibo.resposta.dic_protNFe
