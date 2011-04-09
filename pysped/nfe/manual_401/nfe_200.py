@@ -1147,7 +1147,7 @@ class Det(nfe_110.Det):
     def cst_formatado(self):
         if self.imposto.regime_tributario != 1:
             super(Det, self).cst_formatado()
-        
+
         formatado = unicode(self.imposto.ICMS.orig.valor).zfill(1)
         formatado += unicode(self.imposto.ICMS.CSOSN.valor).zfill(3)
         return formatado
@@ -1625,6 +1625,7 @@ class Ide(nfe_110.Ide):
         xml += self.nNF.xml
         xml += self.dEmi.xml
         xml += self.dSaiEnt.xml
+        xml += self.hSaiEnt.xml
         xml += self.tpNF.xml
         xml += self.cMunFG.xml
 
@@ -1654,6 +1655,7 @@ class Ide(nfe_110.Ide):
             self.nNF.xml     = arquivo
             self.dEmi.xml    = arquivo
             self.dSaiEnt.xml = arquivo
+            self.hSaiEnt.xml = arquivo
             self.tpNF.xml    = arquivo
             self.cMunFG.xml  = arquivo
 

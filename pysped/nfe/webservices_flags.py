@@ -5738,3 +5738,40 @@ MUNICIPIO_CODIGO = {
         u'Xambio\xe1': '1722107'
     }
 }
+
+def accents_remover(text, text_encoding='utf-8'):  # Does it really does what docstring says?
+    """ Remove accents from an Unicode string
+
+    It always returns Unicode strings, without accents from original text
+
+    If text is Unicode, use 'text_encoding' parameter to tell his original encoding.
+    Defaults to 'latin-1'.
+
+    >>> accents_remover(u'Maçã')
+    u'Maca'
+    >>> accents_remover('Maçã')
+    u'Maca'
+
+    """
+    if isinstance(text, str):
+        unicode_string = text.decode(text_encoding)
+    elif isinstance(text, unicode):
+        unicode_string = text#.encode(text_encoding).decode('utf-8')
+    else:
+        raise NotImplementedError()
+
+    from unicodedata import normalize, category
+
+    return unicode(
+        filter(
+            lambda c: category(c) != 'Mn',
+            normalize('NFKD', unicode_string)
+        )
+    )
+
+# Preparando para aceitar nomes de cidade sem acentuação
+for estado, cidades in MUNICIPIO_CODIGO.iteritems():
+    for cidade, codigo in cidades.items():
+        nome_limpo = accents_remover(cidade)
+        if nome_limpo != cidade:
+            MUNICIPIO_CODIGO[estado][nome_limpo] = codigo
