@@ -607,7 +607,7 @@ class XMLNFe(NohXML):
             xml_com_problemas.write(self.xml.encode('utf-8'))
             xml_com_problemas.close()
             print 'XML com problemas salvo em:', xml_com_problemas.name
-            raise RuntimeError(u'NFe nao validou no esquema "%s"' % self.arquivo_esquema)
+            raise RuntimeError(u'NFe nao validou: "%s"' % esquema.error_log.last_error.message.replace('{http://www.portalfiscal.inf.br/nfe}',''))
 
         return esquema.error_log
 
