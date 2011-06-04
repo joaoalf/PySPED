@@ -32,9 +32,9 @@ if __name__ == '__main__':
     n.infNFe.ide.natOp.valor   = u'Venda de produto do estabelecimento'
     n.infNFe.ide.indPag.valor  = 2
     n.infNFe.ide.serie.valor   = 101
-    n.infNFe.ide.nNF.valor     = 29
-    n.infNFe.ide.dEmi.valor    = datetime(2011, 4, 1)
-    n.infNFe.ide.dSaiEnt.valor = datetime(2011, 4, 1)
+    n.infNFe.ide.nNF.valor     = 37
+    n.infNFe.ide.dEmi.valor    = datetime(2011, 5, 25)
+    n.infNFe.ide.dSaiEnt.valor = datetime(2011, 5, 25)
     n.infNFe.ide.cMunFG.valor  = 3513801
     n.infNFe.ide.tpImp.valor   = 1
     n.infNFe.ide.tpEmis.valor  = 1
@@ -48,11 +48,11 @@ if __name__ == '__main__':
     #
     n.infNFe.emit.CNPJ.valor  = u'11111111111111'
     n.infNFe.emit.xNome.valor = u'Razao Social Ltda. EPP'
-    n.infNFe.emit.xFant.valor = u'Nome Fantasia'
+    n.infNFe.emit.xFant.valor = u'Bromelia'
     n.infNFe.emit.enderEmit.xLgr.valor    = u'R. Ibiuna'
     n.infNFe.emit.enderEmit.nro.valor     = u'729'
     n.infNFe.emit.enderEmit.xCpl.valor    = u'sala 3'
-    n.infNFe.emit.enderEmit.xBairro.valor = u'Jd. Morumbi'
+    n.infNFe.emit.enderEmit.xBairro.valor = u'Jd. Guanabara'
     n.infNFe.emit.enderEmit.cMun.valor    = u'3552205'
     n.infNFe.emit.enderEmit.xMun.valor    = u'Sorocaba'
     n.infNFe.emit.enderEmit.UF.valor      = u'SP'
@@ -69,8 +69,8 @@ if __name__ == '__main__':
     #
     # Destinatário
     #
-    n.infNFe.dest.CNPJ.valor  = u'11111111111111'
-    n.infNFe.dest.xNome.valor = u'Razao Social Ltda. EPP'
+    n.infNFe.dest.CNPJ.valor  = u'11143192000101'
+    n.infNFe.dest.xNome.valor = u'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL'
     n.infNFe.dest.enderDest.xLgr.valor    = u'R. Ibiuna'
     n.infNFe.dest.enderDest.nro.valor     = u'729'
     n.infNFe.dest.enderDest.xCpl.valor    = u'sala 3'
@@ -82,7 +82,9 @@ if __name__ == '__main__':
     #n.infNFe.dest.enderDest.cPais.valor   = u'1058'
     #n.infNFe.dest.enderDest.xPais.valor   = u'Brasil'
     n.infNFe.dest.enderDest.fone.valor    = u'1534110602'
-    n.infNFe.dest.IE.valor = u'111111111111'
+    #n.infNFe.dest.IE.valor = u'795009239110'
+    n.infNFe.dest.IE.valor = u''
+
     #
     # Emeio
     #
