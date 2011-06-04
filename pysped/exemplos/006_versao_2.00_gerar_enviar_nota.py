@@ -47,9 +47,9 @@ if __name__ == '__main__':
     # Emitente
     #
     n.infNFe.emit.CNPJ.valor  = u'11111111111111'
-    n.infNFe.emit.xNome.valor = u'Razão Social Ltda. EPP'
+    n.infNFe.emit.xNome.valor = u'Razao Social Ltda. EPP'
     n.infNFe.emit.xFant.valor = u'Nome Fantasia'
-    n.infNFe.emit.enderEmit.xLgr.valor    = u'R. Ibiúna'
+    n.infNFe.emit.enderEmit.xLgr.valor    = u'R. Ibiuna'
     n.infNFe.emit.enderEmit.nro.valor     = u'729'
     n.infNFe.emit.enderEmit.xCpl.valor    = u'sala 3'
     n.infNFe.emit.enderEmit.xBairro.valor = u'Jd. Morumbi'
@@ -70,8 +70,8 @@ if __name__ == '__main__':
     # Destinatário
     #
     n.infNFe.dest.CNPJ.valor  = u'11111111111111'
-    n.infNFe.dest.xNome.valor = u'Razão Social Ltda. EPP'
-    n.infNFe.dest.enderDest.xLgr.valor    = u'R. Ibiúna'
+    n.infNFe.dest.xNome.valor = u'Razao Social Ltda. EPP'
+    n.infNFe.dest.enderDest.xLgr.valor    = u'R. Ibiuna'
     n.infNFe.dest.enderDest.nro.valor     = u'729'
     n.infNFe.dest.enderDest.xCpl.valor    = u'sala 3'
     n.infNFe.dest.enderDest.xBairro.valor = u'Jd. Morumbi'
@@ -94,9 +94,9 @@ if __name__ == '__main__':
     d1 = Det_200()
 
     d1.nItem.valor = 1
-    d1.prod.cProd.valor    = u'código do produto'
+    d1.prod.cProd.valor    = u'codigo do produto'
     d1.prod.cEAN.valor     = u''
-    d1.prod.xProd.valor    = u'Descrição do produto'
+    d1.prod.xProd.valor    = u'Descricao do produto'
     d1.prod.NCM.valor      = u'94034000'
     d1.prod.EXTIPI.valor   = u''
     d1.prod.CFOP.valor     = u'5101'
@@ -144,7 +144,7 @@ if __name__ == '__main__':
     # Os primeiros 188 caracteres desta string
     # são todos os caracteres válidos em tags da NF-e
     #
-    d1.infAdProd.valor = u'!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ·¸¹º»¼½¾¿À'
+    #d1.infAdProd.valor = u'!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ·¸¹º»¼½¾¿À'
 
     #
     # Inclui o detalhe na NF-e
@@ -170,7 +170,7 @@ if __name__ == '__main__':
     n.infNFe.total.ICMSTot.vNF.valor     = u'0.00'
 
     n.infNFe.infAdic.infCpl.valor = u'Documento emitido por ME ou EPP optante pelo Simples Nacional. ' \
-                                    u'Não gera direito a crédito fiscal de IPI. '
+                                    u'Nao gera direito a credito fiscal de IPI. '
     #
     # O retorno de cada webservice é um dicionário
     # estruturado da seguinte maneira:
