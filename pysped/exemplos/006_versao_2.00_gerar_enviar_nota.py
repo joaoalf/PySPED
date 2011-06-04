@@ -94,7 +94,7 @@ if __name__ == '__main__':
     d1 = Det_200()
 
     d1.nItem.valor = 1
-    d1.prod.cProd.valor    = u'codigo do produto'
+    d1.prod.cProd.valor    = u'codigo do produto um'
     d1.prod.cEAN.valor     = u''
     d1.prod.xProd.valor    = u'Descricao do produto'
     d1.prod.NCM.valor      = u'94034000'
@@ -138,6 +138,58 @@ if __name__ == '__main__':
     #d1.imposto.COFINS.vBC.valor    = u'1000.00'
     #d1.imposto.COFINS.pCOFINS.valor   = u'3.00'
     #d1.imposto.COFINS.vCOFINS.valor   = u'30.00'
+
+    #
+    # Detalhe
+    #
+    d2 = Det_200()
+
+    d2.nItem.valor = 2
+    d2.prod.cProd.valor    = u'codigo do produto dois'
+    d2.prod.cEAN.valor     = u''
+    d2.prod.xProd.valor    = u'Descricao do produto'
+    d2.prod.NCM.valor      = u'94034000'
+    d2.prod.EXTIPI.valor   = u''
+    d2.prod.CFOP.valor     = u'5101'
+    d2.prod.uCom.valor     = u'UND'
+    d2.prod.qCom.valor     = u'100.00'
+    d2.prod.vUnCom.valor   = u'10.0000'
+    d2.prod.vProd.valor    = u'1000.00'
+    d2.prod.cEANTrib.valor = u''
+    d2.prod.uTrib.valor    = d1.prod.uCom.valor
+    d2.prod.qTrib.valor    = d1.prod.qCom.valor
+    d2.prod.vUnTrib.valor  = d1.prod.vUnCom.valor
+    d2.prod.vFrete.valor   = u'0.00'
+    d2.prod.vSeg.valor     = u'0.00'
+    d2.prod.vDesc.valor    = u'0.00'
+    d2.prod.vOutro.valor   = u'0.00'
+    #
+    # Produto entra no total da NF-e
+    #
+    d2.prod.indTot.valor   = 1
+
+    #
+    # Impostos
+    #
+    d2.imposto.regime_tributario = 1
+    d2.imposto.ICMS.CSOSN.valor   = u'400'
+    #d2.imposto.ICMS.vBC.valor    = u'1000.00'
+
+    d2.imposto.IPI.CST.valor    = u'99'
+    #d2.imposto.IPI.vBC.valor    = u'1000.00'
+    #d2.imposto.IPI.pIPI.valor   = u'10.00'
+    #d2.imposto.IPI.vIPI.valor   = u'100.00'
+
+    d2.imposto.PIS.CST.valor    = u'06'
+    #d2.imposto.PIS.vBC.valor    = u'1000.00'
+    #d2.imposto.PIS.pPIS.valor   = u'0.65'
+    #d2.imposto.PIS.vPIS.valor   = u'6.50'
+
+    d2.imposto.COFINS.CST.valor    = u'06'
+    #d2.imposto.COFINS.vBC.valor    = u'1000.00'
+    #d2.imposto.COFINS.pCOFINS.valor   = u'3.00'
+    #d2.imposto.COFINS.vCOFINS.valor   = u'30.00'
+
 
 
     #
