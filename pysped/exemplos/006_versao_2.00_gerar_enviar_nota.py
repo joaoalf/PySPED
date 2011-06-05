@@ -47,7 +47,7 @@ if __name__ == '__main__':
     # Emitente
     #
     n.infNFe.emit.CNPJ.valor  = u'11111111111111'
-    n.infNFe.emit.xNome.valor = u'Razao Social Ltda. EPP'
+    n.infNFe.emit.xNome.valor = u'Razao Social Emitente Ltda. EPP'
     n.infNFe.emit.xFant.valor = u'Bromelia'
     n.infNFe.emit.enderEmit.xLgr.valor    = u'R. Ibiuna'
     n.infNFe.emit.enderEmit.nro.valor     = u'729'
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     # Destinatário
     #
     n.infNFe.dest.CNPJ.valor  = u'11143192000101'
-    n.infNFe.dest.xNome.valor = u'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL'
+    n.infNFe.dest.xNome.valor = u'Razao Social Destinatario Ltda. EPP'
     n.infNFe.dest.enderDest.xLgr.valor    = u'R. Ibiuna'
     n.infNFe.dest.enderDest.nro.valor     = u'729'
     n.infNFe.dest.enderDest.xCpl.valor    = u'sala 3'
@@ -82,8 +82,7 @@ if __name__ == '__main__':
     #n.infNFe.dest.enderDest.cPais.valor   = u'1058'
     #n.infNFe.dest.enderDest.xPais.valor   = u'Brasil'
     n.infNFe.dest.enderDest.fone.valor    = u'1534110602'
-    #n.infNFe.dest.IE.valor = u'795009239110'
-    n.infNFe.dest.IE.valor = u''
+    n.infNFe.dest.IE.valor = u'795009239110'
 
     #
     # Emeio
