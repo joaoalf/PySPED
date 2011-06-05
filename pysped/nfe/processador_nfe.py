@@ -200,6 +200,12 @@ class ProcessadorNFe(object):
             envio = EnviNFe_200()
             resposta = RetEnviNFe_200()
 
+            if self.ambiente == 2: # Homologação tem detalhes especificos desde a NT2011_002
+                for nfe in lista_nfes:
+                    nfe.infNFe.dest.CNPJ.valor  = u'99999999000191'
+                    nfe.infNFe.dest.xNome.valor = u'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL'
+                    nfe.infNFe.dest.IE.valor = u''
+
         processo = ProcessoNFe(webservice=WS_NFE_ENVIO_LOTE, envio=envio, resposta=resposta)
 
         #
