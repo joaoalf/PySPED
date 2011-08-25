@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cc89376-62f7-453d-9bac-96a1d20b3a65" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pysped/__init__.py" afterPath="$PROJECT_DIR$/pysped/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <ignored path="PySPED.iws" />
@@ -25,10 +27,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="setup.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="setup.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="32" selection-start="661" selection-end="661" vertical-scroll-proportion="0.4215531">
+            <state line="10" column="38" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pysped/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="1" selection-start="3" selection-end="3" vertical-scroll-proportion="0.044374008">
               <folding />
             </state>
           </provider>
@@ -53,6 +64,7 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/pysped/__init__.py" />
       </list>
     </option>
   </component>
@@ -225,7 +237,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="32" selection-start="661" selection-end="661" vertical-scroll-proportion="0.4215531">
+        <state line="10" column="38" selection-start="325" selection-end="325" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pysped/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="1" selection-start="3" selection-end="3" vertical-scroll-proportion="0.044374008">
           <folding />
         </state>
       </provider>
