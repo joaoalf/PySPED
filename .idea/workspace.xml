@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cc89376-62f7-453d-9bac-96a1d20b3a65" name="Default" comment="" />
+    <list default="true" id="2cc89376-62f7-453d-9bac-96a1d20b3a65" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
+    </list>
     <ignored path="PySPED.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +28,7 @@
       <file leaf-file-name="setup.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="35" selection-start="664" selection-end="664" vertical-scroll-proportion="0.4215531">
+            <state line="19" column="32" selection-start="661" selection-end="661" vertical-scroll-proportion="0.4215531">
               <folding />
             </state>
           </provider>
@@ -223,7 +225,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="35" selection-start="664" selection-end="664" vertical-scroll-proportion="0.4215531">
+        <state line="19" column="32" selection-start="661" selection-end="661" vertical-scroll-proportion="0.4215531">
           <folding />
         </state>
       </provider>
