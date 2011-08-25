@@ -8,7 +8,7 @@ setup(
     description = u'Sistema Público de Escrituração Digital em Python',
     author = u'Aristides Caldeira',
     author_email = u'aristides.caldeira@taugars.com.br',
-    package_dir={'': 'pysped'},
+    packages = ['pysped'],
     include_package_data=True,
     install_requires=['setuptools',
                       'lxml',
