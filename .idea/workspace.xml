@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cc89376-62f7-453d-9bac-96a1d20b3a65" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/PySPED.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/setup.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <ignored path="PySPED.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +28,7 @@
       <file leaf-file-name="setup.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="47" selection-end="47" vertical-scroll-proportion="0.044374008">
+            <state line="11" column="25" selection-start="324" selection-end="324" vertical-scroll-proportion="0.24405706">
               <folding />
             </state>
           </provider>
@@ -230,7 +225,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="47" selection-end="47" vertical-scroll-proportion="0.044374008">
+        <state line="11" column="25" selection-start="324" selection-end="324" vertical-scroll-proportion="0.24405706">
           <folding />
         </state>
       </provider>
