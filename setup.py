@@ -17,5 +17,5 @@ setup(
                       'suds',
                       'PyOpenSSL',
                       'PyXMLSec',
-                      'Geraldo=0.1dev_joaoalf_branch'],
+                      'Geraldo==0.1dev_joaoalf_branch'],
 )
