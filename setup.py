@@ -13,7 +13,7 @@ setup(
                 'pysped.nfe.danfe',
                 'pysped.nfe.manual_300',
                 'pysped.nfe.manual_401',
-                'pysped.nfe.xml_sped'],
+                'pysped.xml_sped'],
     include_package_data=True,
     zip_safe = False,
     dependency_links = ['https://github.com/joaoalf/geraldo/tarball/master#egg=Geraldo-0.1dev_joaoalf_branch'],
