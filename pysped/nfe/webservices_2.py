@@ -308,28 +308,28 @@ UFPR = {
     }
 }
 
-#UFPE = {
-    #NFE_AMBIENTE_PRODUCAO: {
-        #u'servidor'             : u'nfe.sefaz.pe.gov.br',
-        #WS_NFE_ENVIO_LOTE         : u'nfe-service/services/NfeRecepcao',
-        #WS_NFE_CONSULTA_RECIBO : u'nfe-service/services/NfeRetRecepcao',
-        #WS_NFE_CANCELAMENTO     : u'nfe-service/services/NfeCancelamento',
-        #WS_NFE_INUTILIZACAO     : u'nfe-service/services/NfeInutilizacao',
-        #WS_NFE_CONSULTA         : u'nfe-service/services/NfeConsulta',
-        #WS_NFE_SITUACAO         : u'nfe-service/services/NfeStatusServico',
-        #WS_NFE_CONSULTA_CADASTRO: u'nfe-service/services/CadConsultaCadastro'
-        #},
-    #NFE_AMBIENTE_HOMOLOGACAO: {
-        #u'servidor'             : u'nfehomolog.sefaz.pe.gov.br',
-        #WS_NFE_ENVIO_LOTE         : u'nfe-service/services/NfeRecepcao',
-        #WS_NFE_CONSULTA_RECIBO : u'nfe-service/services/NfeRetRecepcao',
-        #WS_NFE_CANCELAMENTO     : u'nfe-service/services/NfeCancelamento',
-        #WS_NFE_INUTILIZACAO     : u'nfe-service/services/NfeInutilizacao',
-        #WS_NFE_CONSULTA         : u'nfe-service/services/NfeConsulta',
-        #WS_NFE_SITUACAO         : u'nfe-service/services/NfeStatusServico',
-        #WS_NFE_CONSULTA_CADASTRO: u'nfe-service/services/CadConsultaCadastro'
-    #}
-#}
+UFPE = {
+    NFE_AMBIENTE_PRODUCAO: {
+        u'servidor'             : u'nfe.sefaz.pe.gov.br',
+        WS_NFE_ENVIO_LOTE         : u'nfe-service/services/NfeRecepcao2',
+        WS_NFE_CONSULTA_RECIBO : u'nfe-service/services/NfeRetRecepcao2',
+        WS_NFE_CANCELAMENTO     : u'nfe-service/services/NfeCancelamento2',
+        WS_NFE_INUTILIZACAO     : u'nfe-service/services/NfeInutilizacao2',
+        WS_NFE_CONSULTA         : u'nfe-service/services/NfeConsulta2',
+        WS_NFE_SITUACAO         : u'nfe-service/services/NfeStatusServico2',
+        WS_NFE_CONSULTA_CADASTRO: u'nfe-service/services/CadConsultaCadastro2'
+        },
+    NFE_AMBIENTE_HOMOLOGACAO: {
+        u'servidor'             : u'nfehomolog.sefaz.pe.gov.br',
+        WS_NFE_ENVIO_LOTE         : u'nfe-service/services/NfeRecepcao2',
+        WS_NFE_CONSULTA_RECIBO : u'nfe-service/services/NfeRetRecepcao2',
+        WS_NFE_CANCELAMENTO     : u'nfe-service/services/NfeCancelamento2',
+        WS_NFE_INUTILIZACAO     : u'nfe-service/services/NfeInutilizacao2',
+        WS_NFE_CONSULTA         : u'nfe-service/services/NfeConsulta2',
+        WS_NFE_SITUACAO         : u'nfe-service/services/NfeStatusServico2',
+        WS_NFE_CONSULTA_CADASTRO: u'nfe-service/services/CadConsultaCadastro2'
+    }
+}
 
 
 UFRS = {
@@ -427,7 +427,7 @@ ESTADO_WS = {
     #u'MT': UFMT,
     u'PA': SVAN,
     u'PB': SVRS,
-    #u'PE': UFPE,
+    u'PE': UFPE,
     u'PI': SVAN,
     u'PR': UFPR,
     u'RJ': SVRS,
