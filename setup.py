@@ -20,7 +20,7 @@ setup(
     install_requires=['setuptools',
                       'lxml',
                       'suds',
-                      'PyOpenSSL',
+                      'PyOpenSSL==0.12',
                       'PyXMLSec',
                       'Geraldo==0.1dev_joaoalf_branch'],
 )
