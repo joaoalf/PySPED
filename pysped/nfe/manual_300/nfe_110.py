@@ -1864,7 +1864,7 @@ class Vol(XMLNFe):
         self.lacres = []
 
     def get_xml(self):
-        if not (self.qVol.valor or self.esp.valor or self.marca.valor or self.nVol.valor or self.pesoL.valor or self.pesoB.valor or len(self.lacres.nLacre)):
+        if not (self.qVol.valor or self.esp.valor or self.marca.valor or self.nVol.valor or self.pesoL.valor or self.pesoB.valor):
             return u''
 
         xml = XMLNFe.get_xml(self)
