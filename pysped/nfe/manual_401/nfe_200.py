@@ -547,7 +547,7 @@ class ICMS(nfe_110.ICMS):
         # Valores de controle, para gerar corretamente as tags
         # com os novos campos
         #
-        self.regime_tributario = 1 # Simples Nacional
+        self.regime_tributario = 3 # Simples Nacional
         self.partilha          = False # Para o grupo ICMSPart
         self.repasse           = False # Para o grupo ICMSST
 
