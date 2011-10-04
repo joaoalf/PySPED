@@ -6,4 +6,4 @@ pysped/exemplos/certificado_caminho.txt
 pysped/exemplos/certificado_senha.txt
 pysped/exemplos/*.pfx
 .idea/*.xml
-
+PySPED.egg-info/*
