@@ -6,8 +6,9 @@ from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
 from reportlab.lib.colors import HexColor
 
-from geraldo import Report, ReportBand, BAND_WIDTH
-from geraldo import ObjectValue, SystemField, Label, Line
+from geraldo.base import Report, ReportBand, BAND_WIDTH
+from geraldo.widgets import ObjectValue, SystemField, Label
+from geraldo.graphics import Line
 import os
 
 

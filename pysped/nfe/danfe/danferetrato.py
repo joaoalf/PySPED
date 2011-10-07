@@ -6,8 +6,9 @@ from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
 from reportlab.lib.colors import HexColor
 
-from geraldo import Report, ReportBand, SubReport
-from geraldo import ObjectValue, SystemField, Label, Line, Rect, Image
+from geraldo.base import Report, ReportBand, SubReport
+from geraldo.widgets import ObjectValue, SystemField, Label
+from geraldo.graphics import Line, Rect, Image
 from geraldo.barcodes import BarCode
 from geraldo.generators import PDFGenerator
 
