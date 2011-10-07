@@ -13,6 +13,8 @@ setup(
                 'pysped.nfe.danfe',
                 'pysped.nfe.manual_300',
                 'pysped.nfe.manual_401',
+                'pysped.nfe.manual_401.schema',
+                'pysped.nfe.manual_401.schema.pl_006g',
                 'pysped.xml_sped',
                 'pysped.relato_sped'],
     include_package_data=True,
