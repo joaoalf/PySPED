@@ -591,9 +591,10 @@ class XMLNFe(NohXML):
         xml = tira_abertura(self.xml).encode(u'utf-8')
 
         esquema = etree.XMLSchema(etree.parse(arquivo_esquema))
-        print u'\nSCHEMA:', arquivo_esquema
+        #print u'\nSCHEMA:', arquivo_esquema
         #esquema.assertValid(etree.fromstring(xml))
         if not esquema.validate(etree.fromstring(xml)):
+            print u'\nSCHEMA:', arquivo_esquema
             print esquema.error_log.last_error
             for nr, line in enumerate(etree.tostring(etree.fromstring(xml),
                                                      encoding="utf-8",
