@@ -31,10 +31,10 @@ LARGURA_PAISAGEM = PAISAGEM[0] - MARGEM_ESQUERDA - MARGEM_DIREITA
 #
 FONTES_ADICIONAIS = {
     u'Gentium Book Basic': (
-        (u'Gentium Book Basic'            , DIRNAME + u'/fonts/genbkbasr.ttf' , False, False),
-        (u'Gentium Book Basic Bold'       , DIRNAME + u'/fonts/genbkbasb.ttf' , True , False),
-        (u'Gentium Book Basic Italic'     , DIRNAME + u'/fonts/genbkbasi.ttf' , False, True),
-        (u'Gentium Book Basic Bold Italic', DIRNAME + u'/fonts/genbkbasbi.ttf', True , True),
+        (u'Gentium Book Basic'            , os.path.join(DIRNAME, u'fonts', u'genbkbasr.ttf') , False, False),
+        (u'Gentium Book Basic Bold'       , os.path.join(DIRNAME, u'fonts', u'genbkbasb.ttf') , True , False),
+        (u'Gentium Book Basic Italic'     , os.path.join(DIRNAME, u'fonts', u'genbkbasi.ttf') , False, True),
+        (u'Gentium Book Basic Bold Italic', os.path.join(DIRNAME, u'fonts', u'genbkbasbi.ttf'), True , True),
     )
 }
 
