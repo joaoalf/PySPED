@@ -7,6 +7,7 @@ import ssl
 from datetime import datetime
 import time
 import os
+import errno
 from uuid import uuid4
 
 from webservices_flags import *
@@ -72,15 +73,22 @@ class ConexaoHTTPS(HTTPSConnection):
 
 
 class ProcessadorNFe(object):
-    def __init__(self):
-        self.ambiente = 2
-        self.estado = u'SP'
-        self.versao = u'1.10'
+    def __init__(self,
+                 ambiente=2,
+                 estado=u'SP',
+                 versao=u'2.00',
+                 caminho=u'',
+                 salvar_arquivos=True,
+                 contingencia_SCAN=False,
+                 logo=u''):
+        self.ambiente = ambiente
+        self.estado = estado
+        self.versao = versao
         self.certificado = Certificado()
-        self.caminho = u''
-        self.salvar_arquivos = True
-        self.contingencia_SCAN = False
-        self.danfe = DANFE()
+        self.caminho = caminho
+        self.salvar_arquivos = salvar_arquivos
+        self.contingencia_SCAN = contingencia_SCAN
+        self.danfe = DANFE(logo)
         self.caminho_temporario = u''
 
         self._servidor     = u''
@@ -196,7 +204,7 @@ class ProcessadorNFe(object):
                 for nfe in lista_nfes:
                     nfe.infNFe.dest.CNPJ.valor  = u'99999999000191'
                     nfe.infNFe.dest.xNome.valor = u'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL'
-                    nfe.infNFe.dest.IE.valor = u''
+                    nfe.infNFe.dest.IE.valor = u'ISENTO'
 
         processo = ProcessoNFe(webservice=WS_NFE_ENVIO_LOTE, envio=envio, resposta=resposta)
 
@@ -657,7 +665,8 @@ class ProcessadorNFe(object):
 
         processo = None
         # Se nota foi autorizada ou denegada
-        if protnfe_recibo.infProt.cStat.valor in (u'100', u'110', u'301', u'302'):
+        #if protnfe_recibo.infProt.cStat.valor in (u'100', u'110', u'301', u'302'):
+        if True:
             if self.versao == u'1.10':
                 processo = ProcNFe_110()
 
@@ -669,7 +678,7 @@ class ProcessadorNFe(object):
 
             self.danfe.NFe     = nfe
             self.danfe.protNFe = protnfe_recibo
-            self.danfe.salvar_arquivo = False
+            self.danfe.salvar_arquivo = True
             self.danfe.gerar_danfe()
 
             danfe_pdf = StringIO()
@@ -719,8 +728,11 @@ class ProcessadorNFe(object):
 
         try:
             os.makedirs(caminho)
-        except:
-            pass
+        except OSError, e:
+            if e.errno == errno.EEXIST:
+                pass
+            else:
+                raise
 
         return caminho
 
@@ -745,14 +757,17 @@ class ProcessadorNFe(object):
 
         try:
             os.makedirs(caminho)
-        except:
-            pass
+        except OSError, e:
+            if e.errno == errno.EEXIST:
+                pass
+            else:
+                raise
 
         return caminho
 
 
 class DANFE(object):
-    def __init__(self):
+    def __init__(self, logo=u''):
         self.imprime_canhoto        = True
         self.imprime_local_retirada = True
         self.imprime_local_entrega  = True
@@ -771,7 +786,7 @@ class DANFE(object):
         self.obs_impressao    = u'DANFE gerado em %(now:%d/%m/%Y, %H:%M:%S)s'
         self.nome_sistema     = u''
         self.site             = u''
-        self.logo             = u''
+        self.logo             = logo
         self.leiaute_logo_vertical = False
         self.dados_emitente   = []
 
@@ -803,8 +818,11 @@ class DANFE(object):
         if self.NFe.infNFe.ide.tpImp.valor == 2:
             raise ValueError(u'DANFE em formato paisagem ainda não implementado')
         else:
-            self.danfe = DANFERetrato()
-            self.danfe.queryset = self.NFe.infNFe.det
+            self.danfe = DANFERetrato(queryset=self.NFe.infNFe.det)
+            #self.danfe.queryset = self.NFe.infNFe.det
+            self.danfe.NFe = self.NFe
+            self.danfe.protNFe = self.protNFe
+            #self.danfe.remetente.NFe = self.NFe
 
         if self.imprime_canhoto:
             self.danfe.band_page_header = self.danfe.canhoto
