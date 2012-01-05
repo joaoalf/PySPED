@@ -2885,18 +2885,19 @@ class NFe(XMLNFe):
         self.infNFe.Id.valor = u'NFe' + chave
 
     def monta_chave(self):
-        self.gera_nova_chave()
-        """
-        chave = unicode(self.infNFe.ide.cUF.valor).zfill(2)
-        chave += unicode(self.infNFe.ide.dEmi.valor.strftime(u'%y%m')).zfill(4)
-        chave += unicode(self.infNFe.emit.CNPJ.valor).zfill(14)
-        chave += unicode(self.infNFe.ide.mod.valor).zfill(2)
-        chave += unicode(self.infNFe.ide.serie.valor).zfill(3)
-        chave += unicode(self.infNFe.ide.nNF.valor).zfill(9)
-        chave += unicode(self.infNFe.ide.cNF.valor).zfill(9)
-        chave += unicode(self.infNFe.ide.cDV.valor).zfill(1)
-        self.chave = chave
-        """
+        if self.chave == u'':
+            self.gera_nova_chave()
+            """
+            chave = unicode(self.infNFe.ide.cUF.valor).zfill(2)
+            chave += unicode(self.infNFe.ide.dEmi.valor.strftime(u'%y%m')).zfill(4)
+            chave += unicode(self.infNFe.emit.CNPJ.valor).zfill(14)
+            chave += unicode(self.infNFe.ide.mod.valor).zfill(2)
+            chave += unicode(self.infNFe.ide.serie.valor).zfill(3)
+            chave += unicode(self.infNFe.ide.nNF.valor).zfill(9)
+            chave += unicode(self.infNFe.ide.cNF.valor).zfill(9)
+            chave += unicode(self.infNFe.ide.cDV.valor).zfill(1)
+            self.chave = chave
+            """
 
     def chave_para_codigo_barras(self):
         #
