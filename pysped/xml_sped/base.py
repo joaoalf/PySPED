@@ -594,21 +594,23 @@ class XMLNFe(NohXML):
         #print u'\nSCHEMA:', arquivo_esquema
         #esquema.assertValid(etree.fromstring(xml))
         if not esquema.validate(etree.fromstring(xml)):
-            print u'\nSCHEMA:', arquivo_esquema
-            print esquema.error_log.last_error
-            for nr, line in enumerate(etree.tostring(etree.fromstring(xml),
-                                                     encoding="utf-8",
-                                                     pretty_print=True
-                                                    ).split('\n')):
-                print nr+1, line
+            #print u'\nSCHEMA:', arquivo_esquema
+            #print esquema.error_log.last_error
+            #for nr, line in enumerate(etree.tostring(etree.fromstring(xml),
+            #                                         encoding="utf-8",
+            #                                         pretty_print=True
+            #                                        ).split('\n')):
+            #    print nr+1, line
                 #raise AssertionError(unicode(schema.error_log))
-            print esquema.error_log.last_error
+
             #import pdb; pdb.set_trace()
             xml_com_problemas = open('XML_COM_PROBLEAS.xml', 'w')
             xml_com_problemas.write(self.xml.encode('utf-8'))
             xml_com_problemas.close()
             print 'XML com problemas salvo em:', xml_com_problemas.name
-            raise RuntimeError(u'NFe nao validou no esquema "%s"' % self.arquivo_esquema)
+            if esquema.error_log.last_error.find('nro') != -1:
+                print esquema.error_log.last_error
+                raise RuntimeError(u'NFe nao validou no esquema "%s"' % self.arquivo_esquema)
 
         return esquema.error_log
 
