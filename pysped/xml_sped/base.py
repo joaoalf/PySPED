@@ -608,7 +608,7 @@ class XMLNFe(NohXML):
             xml_com_problemas.write(self.xml.encode('utf-8'))
             xml_com_problemas.close()
 
-            if str(esquema.error_log.last_error).find('nro') != -1:
+            if str(esquema.error_log.last_error).find('nro') == -1:
                 print 'XML com problemas salvo em:', xml_com_problemas.name
                 print esquema.error_log.last_error
                 raise RuntimeError(u'NFe nao validou no esquema "%s"' % self.arquivo_esquema)
