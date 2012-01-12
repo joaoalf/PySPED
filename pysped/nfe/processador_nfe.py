@@ -682,8 +682,7 @@ class ProcessadorNFe(object):
 
         processo = None
         # Se nota foi autorizada ou denegada
-        #if protnfe_recibo.infProt.cStat.valor in (u'100', u'110', u'301', u'302'):
-        if True:
+        if protnfe_recibo.infProt.cStat.valor in (u'100', u'110', u'301', u'302'):
             if self.versao == u'1.10':
                 processo = ProcNFe_110()
 
@@ -693,15 +692,15 @@ class ProcessadorNFe(object):
             processo.NFe     = nfe
             processo.protNFe = protnfe_recibo
 
-            self.danfe.NFe     = nfe
-            self.danfe.protNFe = protnfe_recibo
-            self.danfe.salvar_arquivo = True
-            self.danfe.gerar_danfe()
+            #self.danfe.NFe     = nfe
+            #self.danfe.protNFe = protnfe_recibo
+            #self.danfe.salvar_arquivo = True
+            #self.danfe.gerar_danfe()
 
-            danfe_pdf = StringIO()
-            self.danfe.danfe.generate_by(PDFGenerator, filename=danfe_pdf)
-            processo.danfe_pdf = danfe_pdf.getvalue()
-            danfe_pdf.close()
+            #danfe_pdf = StringIO()
+            #self.danfe.danfe.generate_by(PDFGenerator, filename=danfe_pdf)
+            #processo.danfe_pdf = danfe_pdf.getvalue()
+            #danfe_pdf.close()
 
             if self.salvar_arquivos:
                 nome_arq = os.path.join(caminho, unicode(nfe.chave).strip().rjust(44, u'0') + u'-proc-nfe.xml')
@@ -720,10 +719,10 @@ class ProcessadorNFe(object):
                 arq.write(processo.xml.encode(u'utf-8'))
                 arq.close()
 
-                nome_arq = os.path.join(caminho, unicode(nfe.chave).strip().rjust(44, u'0') + u'.pdf')
-                arq = open(nome_arq, 'w')
-                arq.write(processo.danfe_pdf)
-                arq.close()
+                #nome_arq = os.path.join(caminho, unicode(nfe.chave).strip().rjust(44, u'0') + u'.pdf')
+                #arq = open(nome_arq, 'w')
+                #arq.write(processo.danfe_pdf)
+                #arq.close()
 
         self.caminho = caminho_original
         return processo
@@ -754,34 +753,51 @@ class ProcessadorNFe(object):
         #print 'Caminho: ', caminho
         return prefix
 
-    def monta_caminho_inutilizacao(self, ambiente=None, data=None, serie=None, numero_inicial=None, numero_final=None):
-        caminho = self.caminho
-
-        if ambiente == 1:
-            caminho = os.path.join(caminho, 'producao')
-        else:
-            caminho = os.path.join(caminho, 'homologacao')
-
-        if data is None:
-            data = datetime.now()
-
-        caminho = os.path.join(caminho, data.strftime(u'%Y-%m') + u'/')
-
-        serie          = unicode(serie).strip().rjust(3, u'0')
-        numero_inicial = unicode(numero_inicial).strip().rjust(9, u'0')
-        numero_final   = unicode(numero_final).strip().rjust(9, u'0')
-
-        caminho = os.path.join(caminho, serie + u'-' + numero_inicial + u'-' + numero_final + u'/')
+    def monta_caminho_inutilizacao(self,
+                                   ambiente=None,
+                                   data=None,
+                                   serie=None,
+                                   numero_inicial=None,
+                                   numero_final=None):
 
         try:
-            os.makedirs(caminho)
+            os.makedirs(prefix)
         except OSError, e:
             if e.errno == errno.EEXIST:
                 pass
             else:
                 raise
+            #print 'Caminho: ', caminho
+        return prefix
 
-        return caminho
+
+#        caminho = self.caminho
+#
+#        if ambiente == 1:
+#            caminho = os.path.join(caminho, 'producao')
+#        else:
+#            caminho = os.path.join(caminho, 'homologacao')
+#
+#        if data is None:
+#            data = datetime.now()
+#
+#        caminho = os.path.join(caminho, data.strftime(u'%Y-%m') + u'/')
+#
+#        serie          = unicode(serie).strip().rjust(3, u'0')
+#        numero_inicial = unicode(numero_inicial).strip().rjust(9, u'0')
+#        numero_final   = unicode(numero_final).strip().rjust(9, u'0')
+#
+#        caminho = os.path.join(caminho, serie + u'-' + numero_inicial + u'-' + numero_final + u'/')
+#
+#        try:
+#            os.makedirs(caminho)
+#        except OSError, e:
+#            if e.errno == errno.EEXIST:
+#                pass
+#            else:
+#                raise
+#
+#        return caminho
 
 
 class DANFE(object):
